@@ -1,7 +1,8 @@
-import React, { use } from "react";
+import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Typed from "typed.js";
+import { FaMapMarkerAlt } from "react-icons/fa";
 import About from "./About";
 import SkillPage from "./skillPage";
 import Projects from "./Projects";
@@ -9,9 +10,8 @@ import Contact from "./Contact";
 
 gsap.registerPlugin(useGSAP);
 
-
-
 function Home() {
+  const typedEl = useRef(null);
 
   useGSAP(() => {
     gsap.fromTo(
@@ -27,87 +27,125 @@ function Home() {
         stagger: 0.2,
       }
     );
+
     gsap.from(".heroImg", {
       opacity: 0,
       x: 100,
-      // filter: "blur(5px)",
       rotateY: 50,
-      // rotateX: 90,
       duration: 0.5,
       ease: "power2.out",
-    })
+    });
 
-    gsap.to(".connectBtn",{
+    gsap.to(".connectBtn", {
       scale: 1.2,
       duration: 1,
       yoyo: true,
       repeat: -1,
-    })
+    });
+  }, []);
 
-  
+  useEffect(() => {
+    const typed = new Typed(typedEl.current, {
+      strings: [
+        "Full Stack Developer",
+        "Creative Coder",
+        "UI/UX Explorer",
+        "Student @ IIT Patna",
+        "Problem Solver"
+      ],
+      typeSpeed: 60,
+      backSpeed: 35,
+      backDelay: 1000,
+      loop: true,
+      showCursor: true,
+      cursorChar: "|"
+    });
 
+    return () => typed.destroy();
   }, []);
 
   return (
     <>
-      <section id="home">
+      <style>
+        {`
+          .animate-wave {
+            display: inline-block;
+          }
+          .animate-wave:hover {
+            animation: wave 2s infinite;
+            transform-origin: 70% 70%;
+          }
+          @keyframes wave {
+            0% { transform: rotate(0.0deg); }
+            10% { transform: rotate(14.0deg); }
+            20% { transform: rotate(-8.0deg); }
+            30% { transform: rotate(14.0deg); }
+            40% { transform: rotate(-4.0deg); }
+            50% { transform: rotate(10.0deg); }
+            60% { transform: rotate(0.0deg); }
+            100% { transform: rotate(0.0deg); }
+          }
+        `}
+      </style>
+
+      <section id="home" className="relative overflow-hidden">
         <img
           src="./leftBlob.svg"
           alt="leftBlob"
-          className="absolute top-[67vh] -left-22 w-[250px] h-[250px]"
+          className="absolute top-[67vh] left-0 w-[250px] h-[250px] opacity-40 z-0"
         />
         <img
           src="./rightBlob.svg"
-          alt="leftBlob"
-          className="absolute top-[80vh] -right-0 w-[150px] h-[150px]"
+          alt="rightBlob"
+          className="absolute top-[80vh] right-0 w-[150px] h-[150px] opacity-40 z-0"
         />
 
-        <div className="h-[100vh] w-full flex flex-col items-center  justify-evenly sm:justify-center sm:flex-row md:ml-4 sm:ml-3 lg:ml-10">
-          <div id="heroContainer" className="flex flex-col gap-4 justify-center items-start w-[80%] sm:w-[50%] h-[60%] px-10">
-            <h1 className="heroContainer text-border tracking-wide text-md sm:xl lg:text-2xl  text-nowrap font-roboto font-medium">
-              Hii, I am{"  "}
-              <span className="text-primary-text text-2xl lg:text-5xl">
+        <div className="min-h-screen w-full flex flex-col-reverse md:flex-row items-center justify-center gap-10 px-6 md:px-10 pt-10 z-10 relative">
+          <div id="heroContainer" className="flex flex-col gap-3 justify-center items-center md:items-start w-full md:w-1/2 text-center md:text-left">
+            <h1 className="heroContainer text-border tracking-wide text-md sm:text-xl lg:text-3xl font-roboto font-medium">
+              Hii, I am
+              <span className="block text-primary-text text-4xl sm:text-5xl lg:text-6xl font-bold mt-1 flex justify-center md:justify-start items-center gap-2">
                 Ayushman Kumar
+                <span className="text-xl sm:text-2xl lg:text-3xl cursor-pointer animate-wave">👋</span>
               </span>
             </h1>
 
-            <h2 className="heroContainer text-secondary-text tracking-wide text-md sm:xl lg:text-2xl font-roboto font-medium">
-              A student, self-taught developer, and tech enthusiast passionate
-              about building things that solve real problems.
-            </h2>
+            <div className="heroContainer flex items-center justify-center md:justify-start text-secondary-text gap-2 text-sm opacity-70">
+              <FaMapMarkerAlt className="text-primary-text" />
+              <span className="text-xs sm:text-sm">IIT Patna, Bihar</span>
+            </div>
 
-            <h4 className="heroContainer text-secondary-text tracking-wide text-[14px] sm:lg lg:text-xl font-roboto font-regular">
-              Exploring Web Development and UI/UX to build clean, functional projects.
-            </h4>
+            <div className="heroContainer text-[22px] sm:text-[32px] lg:text-[45px] text-primary-text font-bold mt-3">
+              <span
+                ref={typedEl}
+                className="typedText bg-clip-text text-transparent bg-gradient-to-r from-primary-text to-secondary-text"
+              ></span>
+            </div>
 
-
-            <div className="heroContainer heroBtn flex flex-col sm:flex-row gap-3 sm:gap-5 text-md text-nowrap">
-              <button className="connectBtn bg-primary-text text-white px-3 py-1 rounded-4xl cursor-pointer
-              hover:scale-102 hover:brightness-95 transition-all duration-300 z-10 shadow-xs shadow-secondary-text/50">Connect with Me</button>
-              <button className="bg-tranparent border-3 inset-3 border-secondary-text text-secondary-text px-3 py-1 rounded-4xl cursor-pointer
-              hover:scale-102 hover:brightness-95 transition-all duration-300 z-10 shadow-xs shadow-secondary-text/50">Download Resume</button>
+            <div className="heroContainer heroBtn flex flex-col sm:flex-row gap-3 sm:gap-5 text-md mt-6">
+              <button className="connectBtn bg-primary-text text-white px-4 py-2 rounded-4xl cursor-pointer hover:scale-102 hover:brightness-95 transition-all duration-300 z-10 shadow-xs shadow-secondary-text/50">
+                Connect with Me
+              </button>
+              <button className="bg-transparent border-2 border-secondary-text text-secondary-text px-4 py-2 rounded-4xl cursor-pointer hover:scale-102 hover:brightness-95 transition-all duration-300 z-10 shadow-xs shadow-secondary-text/50">
+                Download Resume
+              </button>
             </div>
           </div>
 
-          <div
-            className="heroImg overflow-hidden w-[50%] flex justify-center items-center  transition-all duration-300
-          "
-          >
+          <div className="heroImg w-full md:w-1/2 flex justify-center items-center">
             <img
               src="./heroImage.svg"
               alt="Hero Image"
-              className="heroImg w-[100%] h-[100%] text-shadow-lg"
+              className="w-[80%] sm:w-[60%] md:w-[85%] lg:w-[90%] max-w-[500px] h-auto object-contain"
             />
           </div>
         </div>
-        {/* <hr className="w-[80%] sm:w-[50%] h-[1px] bg-secondary-text mx-auto" /> */}
       </section>
 
       <About />
-
       <SkillPage />
       <Projects />
-      <Contact  />
+      <Contact />
     </>
   );
 }
