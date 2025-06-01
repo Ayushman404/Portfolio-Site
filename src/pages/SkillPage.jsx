@@ -40,7 +40,7 @@ const SkillsSection = () => {
     gsap.from(".skillCircle",{
       opacity: 0,
       rotateX: 60,
-      duration: 0.6,
+      duration: 0.2,
       ease: "power4.in",
       stagger: 0.1,
       scrollTrigger:{
@@ -54,7 +54,7 @@ const SkillsSection = () => {
 
 
   return (
-    <section id="skills" className="w-full min-h-screen flex flex-col gap-4 px-4 py-6 bg-gradient-to-br from-secondary-bg to-violet-400/40 overflow-hidden">
+    <section id="skills" className="w-full min-h-screen text-center flex flex-col gap-4 px-4 py-6 bg-gradient-to-br from-secondary-bg to-violet-400/40 overflow-hidden">
       <div className="skillsHead pt-2  ml-10">
         <h1 className="text-4xl font-extrabold text-primary-text mb-3 text-shadow-secondary-text/40 text-shadow-3xs">Skills</h1>
         <p className="text-sm text-secondary-text">Technologies I've mastered and what I'm currently focusing on</p>

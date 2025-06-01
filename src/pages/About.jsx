@@ -70,8 +70,8 @@ function About() {
         id="about"
         className="w-full h-[100vh] flex flex-col justify-start bg-gradient-to-br from-secondary-bg to-violet-400/40"
       >
-        <h1 className="about w-fit border-b-4 h-[10%] flex items-center ml-10 text-4xl
-         md:text-5xl font-bold text-primary-text text-shadow-3xs text-shadow-secondary-text/40">
+        <h1 className="about border-b-4 h-[10%] flex items-center ml-10 text-4xl
+         md:text-5xl font-bold text-primary-text text-center text-shadow-3xs text-shadow-secondary-text/40">
           About Me
         </h1>
         <div className="aboutTop w-full h-[50%] flex flex-row items-center

@@ -4,6 +4,8 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import About from "./About";
 import SkillPage from "./skillPage";
+import Projects from "./Projects";
+import Contact from "./Contact";
 
 gsap.registerPlugin(useGSAP);
 
@@ -104,6 +106,8 @@ function Home() {
       <About />
 
       <SkillPage />
+      <Projects />
+      <Contact  />
     </>
   );
 }
