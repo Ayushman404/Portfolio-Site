@@ -5,6 +5,8 @@ import React from 'react';
 import { FaReact, FaPython, FaJava, FaFigma, FaHtml5, FaCss3Alt, FaGithub, FaNodeJs } from 'react-icons/fa';
 import { SiCplusplus, SiTailwindcss, SiJavascript, SiGnubash, SiRedux, SiGatsby, SiFramer } from 'react-icons/si';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const skills = [
   { name: 'C++', icon: <SiCplusplus size={24} />, level: 90 },
   { name: 'Python', icon: <FaPython size={24} />, level: 55 },
