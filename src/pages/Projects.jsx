@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/all";
+
+gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(useGSAP);
 
 const projectsData = [
   {
@@ -65,6 +71,22 @@ const projectsData = [
 ];
 
 export default function Projects() {
+
+  useGSAP(()=>{
+    gsap.from(".projectCard", {
+      opacity: 0,
+      y: 70,
+      stagger: 0.1,
+      duration: 0.5,
+      scrollTrigger: {
+        trigger: ".projectCard",
+        scroller: window,
+        start: "top 80%",
+        end: "bottom 20%",
+      }
+      }
+    )
+  }, [])
   const [visibleCount, setVisibleCount] = useState(3);
   const [imageIndex, setImageIndex] = useState({});
 
@@ -100,7 +122,7 @@ export default function Projects() {
     <div id="projects" className="min-h-screen bg-gradient-to-br from-secondary-bg to-violet-400/40 p-6 text-gray-900">
       <h2 className="text-4xl font-bold text-center text-primary-text mb-10">My Projects</h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="projectCard grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {projectsData.slice(0, visibleCount).map((project) => (
           <div
             key={project.id}
