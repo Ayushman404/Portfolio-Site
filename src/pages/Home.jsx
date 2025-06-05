@@ -4,7 +4,7 @@ import { useGSAP } from '@gsap/react';
 import Typed from "typed.js";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import About from "./About";
-import SkillPage from "./skillPage";
+import SkillPage from "./SkillPage";
 import Projects from "./Projects";
 import Contact from "./Contact";
 

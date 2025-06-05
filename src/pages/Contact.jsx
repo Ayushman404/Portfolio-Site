@@ -1,10 +1,14 @@
 import { useState, useRef } from "react";
+import React from 'react';
 import { FaEnvelope, FaPhoneAlt, FaGithub, FaLinkedin } from "react-icons/fa";
 import { useGSAP } from "@gsap/react";
+import {ScrollTrigger} from "gsap/all";
 import gsap from "gsap";
 
+gsap.registerPlugin(ScrollTrigger, useGSAP);
+
 export default function Contact() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({name: "", email: "", message: ""})
   const [submitted, setSubmitted] = useState(false);
   const containerRef = useRef(null);
   const inputsRef = useRef([]);
@@ -13,28 +17,56 @@ export default function Contact() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
-    setFormData({ name: "", email: "", message: "" });
+  const [result, setResult] = React.useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setSubmitted((prev)=> !prev);
+    setResult("Sending....");
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "7f801eaf-8e29-45af-bcae-0166cb80d0f5");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setResult("Form Submitted Successfully");
+      event.target.reset();
+    } else {
+      console.log("Error", data);
+      setResult(data.message);
+    }
   };
 
   useGSAP(() => {
     gsap.from(containerRef.current, {
-      opacity: 0,
-      y: 50,
+      opacity: 0.8,
+      scale: 0.4,
+      y: 100,
       duration: 1,
       ease: "power3.out",
+      scrollTrigger:{
+        trigger: inputsRef.current,
+        scroller: window,
+        start: "top 95%",
+        end: "top 80%",
+        scrub: 2,
+      }
     });
 
     gsap.from(inputsRef.current, {
       opacity: 0,
       y: 30,
       duration: 0.6,
-      stagger: 0.15,
+      stagger: 0.1,
       delay: 0.5,
       ease: "power2.out",
+      
     });
   }, []);
 
@@ -87,7 +119,7 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <form onSubmit={handleSubmit} className="flex flex-col gap-6 justify-center">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-6 justify-center text-secondary-text">
             <input
               type="text"
               name="name"

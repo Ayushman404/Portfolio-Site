@@ -73,16 +73,32 @@ const projectsData = [
 export default function Projects() {
 
   useGSAP(()=>{
+    gsap.from(".projectHead", {
+      opacity: 0.8,
+      y: 100,
+      x: 30,
+      scale: 0.2,
+      scrollTrigger: {
+        trigger:".projectHead",
+        scroller: window,
+        start: "top 95%",
+        end: "top 80%",
+        scrub: 2,
+      }
+    })
+
     gsap.from(".projectCard", {
       opacity: 0,
       y: 70,
+      scale: 0.7,
       stagger: 0.1,
-      duration: 0.5,
+      duration: 0.6,
       scrollTrigger: {
         trigger: ".projectCard",
         scroller: window,
-        start: "top 80%",
-        end: "bottom 20%",
+        start: "top 95%",
+        end: "top 80%",
+        scrub: 2,
       }
       }
     )
@@ -120,7 +136,8 @@ export default function Projects() {
 
   return (
     <div id="projects" className="min-h-screen bg-gradient-to-br from-secondary-bg to-violet-400/40 p-6 text-gray-900">
-      <h2 className="text-4xl font-bold text-center text-primary-text mb-10">My Projects</h2>
+      <h1 className="projectHead text-4xl md:text-6xl font-extrabold text-primary-text text-center mb-10
+        select-none drop-shadow-lg tracking-tight">My Projects</h1>
 
       <div className="projectCard grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {projectsData.slice(0, visibleCount).map((project) => (

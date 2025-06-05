@@ -4,138 +4,9 @@ import { ScrollTrigger } from "gsap/all";
 import Highlighter from "react-highlight-words";
 import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-// function About() {
-//   const aboutTopRef = useRef(null);
-//   const highlightsRef = useRef([]);
 
-  // useEffect(() => {
-  //   gsap.fromTo(
-  //     aboutTopRef.current,
-  //     { opacity: 0, y: 40 },
-  //     { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }
-  //   );
-
-//     highlightsRef.current.forEach((el, i) => {
-//       gsap.fromTo(
-//         el,
-//         { backgroundColor: "rgba(255, 255, 255, 0)" },
-//         {
-//           backgroundColor: "rgba(255, 255, 255, 0.15)",
-//           repeat: -1,
-//           yoyo: true,
-//           ease: "sine.inOut",
-//           duration: 2 + i * 0.5,
-//           delay: i * 0.3,
-//         }
-//       );
-//     });
-//   }, []);
-
-//   const addHighlightRef = (el) => {
-//     if (el && !highlightsRef.current.includes(el)) {
-//       highlightsRef.current.push(el);
-//     }
-//   };
-
-//   return (
-//     <section
-//       id="about"
-//       className="w-full h-screen bg-gradient-to-br from-secondary-bg to-violet-400/40
-//       flex flex-col px-6 py-6 text-secondary-text"
-//     >
-//       {/* Heading */}
-//       <h1
-//         className="text-4xl md:text-5xl font-extrabold text-primary-text text-center mb-6
-//         select-none drop-shadow-lg flex-shrink-0"
-//       >
-//         About Me
-//       </h1>
-
-//       {/* Top section: image + text */}
-//       <div
-//         ref={aboutTopRef}
-//         className="flex flex-1 w-full gap-8
-//           flex-col lg:flex-row items-center justify-center"
-//         style={{ minHeight: 0 }}
-//       >
-//         {/* Image */}
-//         <div
-//           className="flex-shrink-0 w-full lg:w-2/5 max-w-md h-60 sm:h-72 md:h-80 lg:h-full"
-//           style={{ minHeight: 0 }}
-//         >
-//           <img
-//             src="./aboutTopImage.svg"
-//             alt="About Illustration"
-//             className="w-full h-full object-contain rounded-lg shadow-lg"
-//           />
-//         </div>
-
-//         {/* Text */}
-//         <div
-//           className="w-full lg:w-3/5 max-w-3xl
-//           text-base sm:text-lg md:text-xl leading-relaxed tracking-wide overflow-y-auto"
-//           style={{ maxHeight: "100%" }}
-//         >
-//           <p className="mb-5">
-//             Hey! I’m{" "}
-//             <span
-//               ref={addHighlightRef}
-//               className="font-semibold text-white bg-white/20 rounded px-1"
-//             >
-//               Ayushman Kumar
-//             </span>
-//             , an{" "}
-//             <span
-//               ref={addHighlightRef}
-//               className="font-semibold text-white bg-white/20 rounded px-1"
-//             >
-//               AI & Data Science
-//             </span>{" "}
-//             student at IIT Patna, crafting user-first digital experiences.
-//           </p>
-
-//           <p className="mb-5">
-//             Skilled in{" "}
-//             <span
-//               ref={addHighlightRef}
-//               className="font-semibold text-white bg-white/20 rounded px-1"
-//             >
-//               C++, Python, JavaScript, React
-//             </span>
-//             , I turn ideas into clean, functional interfaces and design with{" "}
-//             <span
-//               ref={addHighlightRef}
-//               className="font-semibold text-white bg-white/20 rounded px-1"
-//             >
-//               Figma
-//             </span>
-//             .
-//           </p>
-
-//           <p>
-//             Beyond code, I enjoy fast learning, leading a{" "}
-//             <span
-//               ref={addHighlightRef}
-//               className="font-semibold text-white bg-white/20 rounded px-1"
-//             >
-//               robotics event
-//             </span>{" "}
-//             and hosting{" "}
-//             <span
-//               ref={addHighlightRef}
-//               className="font-semibold text-white bg-white/20 rounded px-1"
-//             >
-//               esports
-//             </span>
-//             , collaborating with creative minds.
-//           </p>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
 
 // Key terms to highlight
 const HIGHLIGHT_TERMS = [
@@ -159,18 +30,35 @@ function About() {
       aboutTopRef.current,
       {
         opacity: 0,
-        y: 40,
-        duration: 1.2,
+        y: 100,
+        scale: 0.6,
+        duration: 0.8,
         ease: "power3.out",
         scrollTrigger: {
           trigger: aboutTopRef.current,
           scroller: window,
           // markers: true,
           start: "top 90%",
-          end: "top 50%",
+          end: "top 80%",
+          scrub: 2,
         },
       }
     );
+    gsap.from(".aboutHead", {
+      y: 100,
+      optacity: 0.8,
+      scale: 0.2,
+      x: 30,
+      duration: 0.5,
+      scrollTrigger:{
+        trigger: ".aboutHead",
+        scroller: window,
+        // markers: true,
+        start: "top 95%",
+        end: "top 80%",
+        scrub: 2,
+      }
+    });
   }, []);
 
   // Custom highlight style for react-highlight-words
@@ -190,7 +78,7 @@ function About() {
     >
       {/* Heading */}
       <h1
-        className="text-4xl md:text-6xl font-extrabold text-primary-text text-center mb-10
+        className="aboutHead text-4xl md:text-6xl font-extrabold text-primary-text text-center mb-10
         select-none drop-shadow-lg tracking-tight"
       >
         About Me
