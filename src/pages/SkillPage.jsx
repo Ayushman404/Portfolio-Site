@@ -104,7 +104,7 @@ const SkillsSection = () => {
   return (
     <section
       id="skills"
-      className="w-full min-h-screen text-center flex flex-col gap-4 px-4 py-6 bg-gradient-to-br from-secondary-bg to-violet-400/40 overflow-hidden"
+      className="w-full min-h-screen text-center flex flex-col gap-4 px-4 py-6 bg-secondary-bg bg-[url(/images/gridLinesSkill.jpg)] bg-cover bg-blend-multiply overflow-hidden"
     >
       <div className="skillsHead pt-2  ml-10">
         <h1
@@ -156,7 +156,7 @@ const SkillsSection = () => {
 
         {/* Right Section: Learning + Tools + Soft Skills */}
         <div className="w-full lg:w-[35%] flex flex-col items-center justify-evenly text-center px-2 gap-4 h-full">
-          <div className="rightSkills w-full bg-white rounded-xl shadow-lg p-4">
+          <div className="rightSkills w-full bg-primary-bg rounded-xl shadow-lg p-4">
             <h2 className="text-2xl font-bold text-primary-text mb-2 text-shadow-secondary-text text-shadow-3xs">
               Currently Learning
             </h2>
@@ -164,7 +164,7 @@ const SkillsSection = () => {
               {learning.map((item, i) => (
                 <li
                   key={i}
-                  className="text-gray-700 font-medium tracking-wide pl-1"
+                  className="text-secondary-text font-medium tracking-wide pl-1"
                 >
                   {item}
                 </li>
@@ -172,7 +172,7 @@ const SkillsSection = () => {
             </ul>
           </div>
 
-          <div className="rightSkills w-full bg-white rounded-xl shadow-lg p-4">
+          <div className="rightSkills w-full bg-primary-bg rounded-xl shadow-lg p-4">
             <h2 className="text-xl font-semibold text-primary-text mb-2 text-shadow-secondary-text text-shadow-3xs">
               Libraries & Tools
             </h2>
@@ -188,7 +188,7 @@ const SkillsSection = () => {
             </div>
           </div>
 
-          <div className="rightSkills w-full bg-white rounded-xl shadow-lg p-4">
+          <div className="rightSkills w-full bg-primary-bg rounded-xl shadow-lg p-4">
             <h2 className="text-xl font-semibold text-primary-text mb-2 text-shadow-secondary-text text-shadow-3xs">
               Strengths
             </h2>

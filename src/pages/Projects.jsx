@@ -135,7 +135,7 @@ export default function Projects() {
   };
 
   return (
-    <div id="projects" className="min-h-screen bg-gradient-to-br from-secondary-bg to-violet-400/40 p-6 text-gray-900">
+    <div id="projects" className="min-h-screen bg-secondary-bg p-6 text-gray-900">
       <h1 className="projectHead text-4xl md:text-6xl font-extrabold text-primary-text text-center mb-10
         select-none drop-shadow-lg tracking-tight">My Projects</h1>
 
@@ -143,7 +143,7 @@ export default function Projects() {
         {projectsData.slice(0, visibleCount).map((project) => (
           <div
             key={project.id}
-            className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300 flex flex-col"
+            className="bg-primary-bg rounded-2xl shadow-xs overflow-hidden hover:shadow-xl transition duration-300 flex flex-col"
           >
             <div className="relative w-full h-48">
               <img
@@ -165,8 +165,8 @@ export default function Projects() {
               </button>
             </div>
             <div className="p-4 flex flex-col justify-between flex-grow">
-              <h3 className="text-xl font-semibold text-primary-text text-shadow-2xs text-shadow-secondary-text">{project.title}</h3>
-              <p className="text-sm mt-2 text-gray-600 flex-grow">{project.description}</p>
+              <h3 className="text-xl font-semibold text-primary-text">{project.title}</h3>
+              <p className="text-sm mt-2 text-secondary-text flex-grow">{project.description}</p>
               <div className="flex justify-between mt-4">
                 <a
                   href={project.demo}
@@ -181,7 +181,7 @@ export default function Projects() {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center text-sm text-gray-700 hover:underline"
+                  className="flex items-center text-sm text-secondary-text hover:underline"
                 >
                   <FaGithub className="mr-1" /> GitHub
                 </a>

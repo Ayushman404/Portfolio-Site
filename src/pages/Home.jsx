@@ -87,18 +87,11 @@ function Home() {
           }
         `}
       </style>
+      
 
-      <section id="home" className="relative overflow-hidden">
-        <img
-          src="./leftBlob.svg"
-          alt="leftBlob"
-          className="absolute top-[67vh] left-0 w-[250px] h-[250px] opacity-40 z-0"
-        />
-        <img
-          src="./rightBlob.svg"
-          alt="rightBlob"
-          className="absolute top-[80vh] right-0 w-[150px] h-[150px] opacity-40 z-0"
-        />
+
+      <section id="home" className="relative overflow-hidden bg-secondary-bg bg-[url(/images/gridLines.jpg)] bg-cover bg-blend-multiply ">
+        
 
         <div className="min-h-screen w-full flex flex-col-reverse md:flex-row items-center justify-center gap-10 px-6 md:px-10 pt-10 z-10 relative">
           <div id="heroContainer" className="flex flex-col gap-3 justify-center items-center md:items-start w-full md:w-1/2 text-center md:text-left">

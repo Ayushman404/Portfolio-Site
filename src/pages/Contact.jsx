@@ -71,10 +71,10 @@ export default function Contact() {
   }, []);
 
   return (
-    <div id="contact" className="min-h-screen bg-gradient-to-br from-secondary-bg to-violet-400/40 flex items-center justify-center px-4 py-10 sm:py-16">
+    <div id="contact" className="min-h-screen bg-secondary-bg flex items-center justify-center px-4 py-10 sm:py-16">
       <div
         ref={containerRef}
-        className="w-full max-w-5xl bg-secondary-bg rounded-3xl shadow-xl p-6 sm:p-10"
+        className="w-full max-w-5xl bg-primary-bg rounded-3xl shadow-xl p-6 sm:p-10"
       >
         <h2 className="text-3xl sm:text-4xl font-bold text-center text-primary-text mb-10">
           Let's Connect!

@@ -17,8 +17,8 @@
         --color-primary-text: #7E06FF;
         --color-secondary-text: #111827;
         --color-btn: #B885FC;
-        --secondary-bg: #F9FAFB;
-        --primary-bg: #D9B9FF;
+        --secondary-bg: #d4d8fb;
+        --primary-bg: #e6e4f3;
         
         /* --font-logo: 'Roboto'; */
     }
@@ -27,8 +27,8 @@
         --color-primary-text: salmon;
         --color-secondary-text: #D5E2FF;
         --color-btn: #B885FC;
-        --secondary-bg: #2D2E2F;
-        --primary-bg: #5E4280;
+        --secondary-bg: #0D1321;
+        --primary-bg: #342f3e;
     }
 }
 

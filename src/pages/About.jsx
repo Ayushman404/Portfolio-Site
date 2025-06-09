@@ -73,7 +73,7 @@ function About() {
   return (
     <section
       id="about"
-      className="w-full min-h-screen bg-gradient-to-br from-secondary-bg to-violet-400/40
+      className="w-full min-h-screen bg-secondary-bg 
       flex flex-col px-4 md:px-10 py-10 text-secondary-text"
     >
       {/* Heading */}
