@@ -117,7 +117,7 @@ export default function Projects() {
           <div
             key={project.id}
             ref={(el) => (cardRefs.current[i] = el)}
-            className="relative bg-primary-bg overflow-hidden rounded-3xl shadow-2xl h-[30rem]"
+            className="relative bg-primary-bg overflow-hidden rounded-3xl shadow-sm h-[30rem] shadow-secondary-text p-4"
           >
             <div
               ref={(el) => (imageRefs.current[i] = el)}

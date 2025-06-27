@@ -5,8 +5,8 @@ import {
   FaArrowRight,
   FaLinkedin,
   FaGithub,
-  FaInstagram,
   FaMapMarkerAlt,
+  FaEnvelope,
 } from "react-icons/fa";
 
 export default function HeroSection() {
@@ -214,19 +214,19 @@ export default function HeroSection() {
             <div className="flex sm:hidden gap-6 z-10">
               {[
                 {
-                  href: "https://linkedin.com",
+                  href: "https://www.linkedin.com/in/ayushman-kumar-116aa7328/",
                   icon: <FaLinkedin />,
                   label: "LinkedIn",
                 },
                 {
-                  href: "https://github.com",
+                  href: "https://github.com/Ayushman404",
                   icon: <FaGithub />,
                   label: "GitHub",
                 },
                 {
-                  href: "https://instagram.com",
-                  icon: <FaInstagram />,
-                  label: "Instagram",
+                  href: "mailto:ayushmankumar9905000@gmail.com",
+                  icon: <FaEnvelope />,
+                  label: "Email",
                 },
               ].map(({ href, icon, label }, i) => (
                 <a
@@ -248,19 +248,19 @@ export default function HeroSection() {
         <div className="absolute left-6 bottom-1/2 translate-y-1/2 flex-col gap-3 z-10 hidden sm:flex">
           {[
             {
-              href: "https://linkedin.com",
+              href: "https://www.linkedin.com/in/ayushman-kumar-116aa7328/",
               icon: <FaLinkedin />,
               label: "LinkedIn",
             },
             {
-              href: "https://github.com",
+              href: "https://github.com/Ayushman404",
               icon: <FaGithub />,
               label: "GitHub",
             },
             {
-              href: "https://instagram.com",
-              icon: <FaInstagram />,
-              label: "Instagram",
+              href: "mailto:ayushmankumar9905000@gmail.com",
+              icon: <FaEnvelope />,
+              label: "Email",
             },
           ].map(({ href, icon, label }, i) => (
             <a

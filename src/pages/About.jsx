@@ -66,7 +66,7 @@ export default function About() {
 
       <div ref={imageRef} className="w-40 h-40 md:w-52 md:h-52 mb-10 z-10">
         <img
-          src="./images/tabIcon.jpg"
+          src="./images/Ayushman_portrait.jpg"
           alt="Profile"
           className="w-full h-full object-cover rounded-full border-2 border-primary-text shadow-md"
         />
