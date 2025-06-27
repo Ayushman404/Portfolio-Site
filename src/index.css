@@ -13,22 +13,26 @@
 
 @layer base{
     :root{
-        --color-border: #59608D;
-        --color-primary-text: #7E06FF;
+        --color-accent: #59608D;
+        --color-primary-text: #E11D48;
+        /* --color-primary-text: #7E06FF; */
         --color-secondary-text: #111827;
-        --color-btn: #B885FC;
-        --secondary-bg: #d4d8fb;
+        --color-bw-text: black;
+        --secondary-bg: #d3eef090;
         --primary-bg: #e6e4f3;
         
         /* --font-logo: 'Roboto'; */
     }
     .dark{
-        --color-border: #DE99F6;
-        --color-primary-text: salmon;
-        --color-secondary-text: #D5E2FF;
-        --color-btn: #B885FC;
-        --secondary-bg: #0D1321;
-        --primary-bg: #342f3e;
+        --color-accent: #F472B6;
+        --color-primary-text: #FF6B6B;
+        --color-secondary-text: #CBD5E1;
+        /* --color-secondary-text: #D5E2FF; */
+        --color-bw-text: white;
+        --secondary-bg: #0D1B2A;
+        /* --secondary-bg: #0D1321; */
+        --primary-bg: #1B263B;
+        /* --primary-bg: #342f3e; */
     }
 }
 

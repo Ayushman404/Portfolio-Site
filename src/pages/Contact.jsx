@@ -11,6 +11,7 @@ export default function Contact() {
   const [formData, setFormData] = useState({name: "", email: "", message: ""})
   const [submitted, setSubmitted] = useState(false);
   const containerRef = useRef(null);
+  const headRef = useRef(null);
   const inputsRef = useRef([]);
 
   const handleChange = (e) => {
@@ -25,7 +26,7 @@ export default function Contact() {
     setResult("Sending....");
     const formData = new FormData(event.target);
 
-    formData.append("access_key", "7f801eaf-8e29-45af-bcae-0166cb80d0f5");
+    formData.append("access_key", import.meta.env.VITE_FORM_ACCESS_KEY);
 
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -51,7 +52,7 @@ export default function Contact() {
       duration: 1,
       ease: "power3.out",
       scrollTrigger:{
-        trigger: inputsRef.current,
+        trigger: headRef.current,
         scroller: window,
         start: "top 95%",
         end: "top 80%",
@@ -59,7 +60,7 @@ export default function Contact() {
       }
     });
 
-    gsap.from(inputsRef.current, {
+    gsap.from(headRef.current, {
       opacity: 0,
       y: 30,
       duration: 0.6,
@@ -73,10 +74,10 @@ export default function Contact() {
   return (
     <div id="contact" className="min-h-screen bg-secondary-bg flex items-center justify-center px-4 py-10 sm:py-16">
       <div
-        ref={containerRef}
-        className="w-full max-w-5xl bg-primary-bg rounded-3xl shadow-xl p-6 sm:p-10"
+        ref = {containerRef}
+        className="w-full max-w-5xl bg-primary-bg/40 rounded-3xl shadow-xl p-6 sm:p-10"
       >
-        <h2 className="text-3xl sm:text-4xl font-bold text-center text-primary-text mb-10">
+        <h2 ref={headRef} className="text-3xl sm:text-4xl font-bold text-center text-primary-text mb-10">
           Let's Connect!
         </h2>
 

@@ -1,106 +1,138 @@
-import React, { use } from 'react'
-import DarkModeToggle from './DarkToggle'
-import { gsap } from 'gsap'
-import { useGSAP } from '@gsap/react'
+import React, { useState, useEffect, useRef } from 'react';
+import DarkModeToggle from './DarkToggle';
+import { gsap } from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { FaHome, FaUserAlt, FaTools, FaProjectDiagram, FaEnvelope } from 'react-icons/fa';
+import { Tooltip } from 'react-tooltip';
 
 gsap.registerEffect(useGSAP);
 
-
-
-
-
 const navItems = [
-    {
-        name: "Home",
-        link: "#home"
-    },
-    {
-        name: "About",
-        link: "#about"
-    },
-    {
-        name: "Skills",
-        link: "#skills"
-    },
-    {
-        name: "Projects",
-        link: "#projects"
-    },
-    {
-        name: "Contact",
-        link: "#contact"
-    }
-]
-
+  { name: 'Home', link: '#home', icon: <FaHome /> },
+  { name: 'About', link: '#about', icon: <FaUserAlt /> },
+  { name: 'Skills', link: '#skills', icon: <FaTools /> },
+  { name: 'Projects', link: '#projects', icon: <FaProjectDiagram /> },
+  { name: 'Contact', link: '#contact', icon: <FaEnvelope /> },
+];
 
 function Header() {
-    useGSAP(() => {
-    gsap.fromTo("nav a",{
-        opacity: 0, scale: 0.6, y: -50
-    },
-    {
-        opacity: 1, scale: 1, y: 0,
+  const [navMenu, setNavMenu] = useState(false);
+  const [showCapsuleNav, setShowCapsuleNav] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
+  const capsuleRef = useRef(null);
+
+  const toggleNavMenu = () => setNavMenu(!navMenu);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowCapsuleNav(window.scrollY > 80);
+
+      const sections = navItems.map((item) => document.querySelector(item.link));
+      for (let i = 0; i < sections.length; i++) {
+        const section = sections[i];
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 80 && rect.bottom >= 80) {
+            setActiveSection(navItems[i].link);
+            break;
+          }
+        }
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useGSAP(() => {
+    gsap.fromTo(
+      'nav a',
+      { opacity: 0, scale: 0.6, y: -50 },
+      {
+        opacity: 1,
+        scale: 1,
+        y: 0,
         duration: 1,
-        ease: "power4.out",
-    })
-}, []);
-    const [navMenu, setNavMenu] = React.useState(false);
-    const toggleNavMenu = () => {
-        setNavMenu(!navMenu);
+        ease: 'power4.out',
+      }
+    );
+  }, []);
+
+  useGSAP(() => {
+    if (showCapsuleNav && capsuleRef.current) {
+      gsap.fromTo(
+        capsuleRef.current,
+        { opacity: 0, y: -30, scale: 0.8 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.5,
+          ease: 'power2.out',
+        }
+      );
     }
+  }, [showCapsuleNav]);
+
   return (
-    <nav className={`h-[10vh] absolute flex w-full z-40 transition-all duration-300`}>
+    <>
+      {/* Full Nav (Desktop and Mid Screens) */}
+      <nav className="hidden sm:flex h-[7vh] fixed top-0 left-0 w-full backdrop-blur-md shadow-2xs shadow-secondary-text/20 z-40 px-4 md:px-6">
+        <div className="flex items-center justify-between w-full max-w-[1200px] mx-auto">
+          {/* Logo */}
+          <a href="#home" className="text-lg font-bold text-primary-text whitespace-nowrap">
+            <span className="text-secondary-text">Ayushman</span> Portfolio
+          </a>
 
-        {/* logo */}
-        <div className='container flex items-center justify-between'>
-            <a href="#home" className='text-lg sm:text-lg md:text-xl font-bold text-primary-text flex items-center'>
-                <span className='relative z-10'>
-                    <span className='text-secondary-text'>Ayushman</span>{" "} Portfolio
-                </span>
-            </a>
-        </div>
-
-        {/* nav items */}
-        {/* desktop nav */}
-        <div className='hidden sm:flex sm:items-center sm:mr-4 space-x-6'>
-            {navItems.map((item, key)=>(
-                <a href={item.link} key={key} className='text-[16px] md:text-lg font-semibold text-secondary-text 
-                hover:text-primary-text transition-colors duration-300 cursor-pointer'>
-                    {item.name}
-                </a>
+          {/* Nav Items */}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 ml-4">
+            {navItems.map((item, key) => (
+              <a
+                key={key}
+                href={item.link}
+                className={`text-[15px] md:text-[17px] font-semibold transition-colors duration-300 cursor-pointer ${
+                  activeSection === item.link ? 'text-primary-text' : 'text-secondary-text hover:text-primary-text'
+                }`}
+              >
+                {item.name}
+              </a>
             ))}
             <DarkModeToggle />
+          </div>
         </div>
+      </nav>
 
-        {/* mobile nav */}
-        <div className='sm:hidden flex items-center gap-3'>
-            <button onClick={toggleNavMenu} className='text-lg text-secondary-text hover:text-primary-text
-             transition-colors duration-300 cursor-pointer font-semibold'>
-                {!navMenu ? '☰' : '✕'}
-            </button>
-            
-            <DarkModeToggle />
+      {/* Capsule Nav (Mobile - On Scroll) */}
+      {showCapsuleNav && (
+        <div
+          ref={capsuleRef}
+          className="fixed top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-white/5 backdrop-blur-md border border-primary-text/30 rounded-full shadow-xl flex items-center gap-4 z-50 sm:hidden"
+        >
+          {navItems.map((item, key) => (
+            <a
+              key={key}
+              href={item.link}
+              data-tooltip-id="nav-tooltip"
+              data-tooltip-content={item.name}
+              className={`text-[18px] text-secondary-text hover:scale-110 transition-transform duration-300 ${
+                activeSection === item.link ? 'text-primary-text' : 'opacity-70'
+              }`}
+            >
+              {item.icon}
+            </a>
+          ))}
+          <DarkModeToggle />
+          <Tooltip id="nav-tooltip" place="bottom" className="!text-[12px]" />
         </div>
+      )}
 
-        <div>
-            {/* mobile menu */}
-            {navMenu && (
-                <div className='absolute top-16 left-0 w-full bg-linear-br from-secondary-bg to-primary-bg p-4 shadow-lg rounded-lg sm:hidden'>
-                    <ul className='space-y-4'>
-                        {navItems.map((item, key) => (
-                            <li key={key}>
-                                <a href={item.link} className='text-lg text-secondary-text hover:text-primary-text transition-colors duration-300 cursor-pointer'>
-                                    {item.name}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            )}
-        </div>
-
-    </nav>
-  )
+      {/* Logo for Mobile Always Visible */}
+      {/* <div className="fixed top-4 left-4 sm:hidden z-50">
+        <a href="#home" className="text-base font-bold text-primary-text">
+          Ayushman
+        </a>
+      </div> */}
+    </>
+  );
 }
 
-export default Header
+export default Header;
