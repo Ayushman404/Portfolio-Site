@@ -4,6 +4,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import './index.css'
 import App from './App.jsx'
 import Index from './pages/Index.jsx'
+import { Analytics } from "@vercel/analytics/next"
 
 
 const router = createBrowserRouter(
@@ -19,6 +20,7 @@ const router = createBrowserRouter(
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     {/* <App /> */}
+    <Analytics />
     <RouterProvider router = {router} />
   </StrictMode>,
 )

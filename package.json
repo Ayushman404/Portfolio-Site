@@ -15,6 +15,7 @@
     "@splinetool/react-spline": "^4.0.0",
     "@splinetool/runtime": "^1.10.2",
     "@tailwindcss/vite": "^4.1.7",
+    "@vercel/analytics": "^1.5.0",
     "cors": "^2.8.5",
     "framer-motion": "^12.15.0",
     "gsap": "^3.13.0",
