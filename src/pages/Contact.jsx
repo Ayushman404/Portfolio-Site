@@ -35,9 +35,14 @@ export default function Contact() {
 
     const data = await response.json();
 
+    // console.log(event.target);
+
     if (data.success) {
       setResult("Form Submitted Successfully");
       event.target.reset();
+      inputsRef.current.forEach((input) => {
+        input.value = "";
+      });
     } else {
       console.log("Error", data);
       setResult(data.message);

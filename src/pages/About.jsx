@@ -3,7 +3,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { useGSAP } from "@gsap/react";
 
-
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export default function About() {
@@ -77,23 +76,37 @@ export default function About() {
           <div
             key={i}
             ref={ref}
-            className={`relative z-10 group max-w-3xl bg-white/10 backdrop-blur-md border-2 border-white/10 p-6 rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:scale-[1.02] ${i % 2 == 0 ? "self-start" : "self-end"}`}
+            className={`relative z-10 group max-w-3xl bg-white/10 backdrop-blur-md border-2 border-white/10 p-6 rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:scale-[1.02] ${
+              i % 2 == 0 ? "self-start" : "self-end"
+            }`}
           >
             <div className="absolute inset-0 z-0 bg-primary-text/5 blur-xl rounded-xl scale-75 group-hover:scale-[0.85] transition-all duration-500 pointer-events-none"></div>
             <p className="relative text-lg sm:text-xl md:text-2xl text-center font-medium z-10 font-body leading-relaxed text-secondary-text">
               {i === 0 && (
                 <>
-                  I’m <span className="text-primary-text font-semibold">Ayushman Kumar</span> — a builder and systems thinker from <span className="text-primary-text">IIT Patna</span>, working at the edge of technology and design.
+                  I’m{" "}
+                  <span className="text-primary-text font-semibold">
+                    Ayushman Kumar
+                  </span>{" "}
+                  — an AI & Data Science undergrad at{" "}
+                  <span className="text-primary-text">IIT Patna</span>, building
+                  full-stack projects with a focus on solid systems, clean UI,
+                  and real-world utility.
                 </>
               )}
               {i === 1 && (
                 <>
-                  I approach development as problem-solving: building reliable systems, designing clear interfaces, and always learning forward.
+                  I approach development as problem-solving — building things
+                  that work well, look clean, and scale when they need to.
+                  Whether it’s structuring backend logic or refining a user
+                  interface, I enjoy figuring things out and learning as I go.
                 </>
               )}
               {i === 2 && (
                 <>
-                  Outside of code, you’ll find me exploring esports 🎮, hosting campus events 🎤, and collaborating with sharp, creative minds 💡.
+                  Beyond code, I’m into esports, help in campus events, also a
+                  sub-coordinator at Celesta Flagship Events, and enjoy working with people who bring
+                  sharp ideas and strong execution.
                 </>
               )}
             </p>

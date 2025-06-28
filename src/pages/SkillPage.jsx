@@ -18,7 +18,7 @@ import {
   SiJavascript,
   SiGnubash,
   SiRedux,
-  SiGatsby,
+  SiExpress,
   SiFramer,
 } from "react-icons/si";
 
@@ -26,16 +26,16 @@ gsap.registerPlugin(ScrollTrigger);
 
 const skills = [
   { name: "C++", icon: <SiCplusplus size={24} />, level: 90 },
-  { name: "Python", icon: <FaPython size={24} />, level: 55 },
+  { name: "Python", icon: <FaPython size={24} />, level: 85 },
   { name: "JavaScript", icon: <SiJavascript size={24} />, level: 80 },
-  { name: "React", icon: <FaReact size={24} />, level: 75 },
+  { name: "React", icon: <FaReact size={24} />, level: 80 },
   { name: "Tailwind", icon: <SiTailwindcss size={24} />, level: 80 },
-  { name: "HTML", icon: <FaHtml5 size={24} />, level: 95 },
-  { name: "CSS", icon: <FaCss3Alt size={24} />, level: 90 },
+  { name: "NodeJs", icon: <FaNodeJs size={24} />, level: 75 },
+  { name: "Express", icon: <SiExpress size={24} />, level: 80 },
   { name: "Figma", icon: <FaFigma size={24} />, level: 70 },
 ];
 
-const learning = ["Framer Motion", "Redux", "Japanese"];
+const learning = ["Framer Motion", "File Uploads (Multer / Cloudinary)", "OpenAI API (chat, whisper)", "Data Science" ];
 
 const tools = [
   "GSAP",
@@ -43,14 +43,15 @@ const tools = [
   "Axios",
   "Node.js",
   "Git & GitHub",
-  "VS Code",
+  "Docker",
   "Postman",
 ];
-const softSkills = [
-  "Fast Learner",
-  "Team Player",
-  "Creative Thinker",
-  "Curious by Nature",
+const futIdeas = [
+  "RAG Applications",
+  "LangChain / LlamaIndex",
+  "Three.js",
+  "WebSockets",
+  "System Design Basics"
 ];
 
 const SkillsSection = () => {
@@ -131,7 +132,7 @@ const SkillsSection = () => {
                   cx="50%"
                   cy="50%"
                   r="44"
-                  className="fill-none stroke-pink-200"
+                  className="fill-none stroke-rose-300"
                   strokeWidth="5"
                 />
                 <circle
@@ -190,10 +191,10 @@ const SkillsSection = () => {
 
           <div className="rightSkills w-full bg-primary-bg rounded-xl shadow-lg p-4">
             <h2 className="text-xl font-semibold text-primary-text mb-2 text-shadow-secondary-text text-shadow-3xs">
-              Strengths
+              Future Interests
             </h2>
             <div className="flex flex-wrap gap-2 justify-center">
-              {softSkills.map((skill, i) => (
+              {futIdeas.map((skill, i) => (
                 <span
                   key={i}
                   className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-medium shadow-sm"
