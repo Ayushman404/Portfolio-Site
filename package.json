@@ -2,7 +2,7 @@
   "name": "portfolio",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://ayushman404.me/Portfolio-Site/",
+  "homepage": "http://ayushman404.me/Portfolio-Site/",
   "type": "module",
   "scripts": {
     "dev": "vite",
