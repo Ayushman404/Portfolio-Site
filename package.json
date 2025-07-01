@@ -2,12 +2,15 @@
   "name": "portfolio",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://ayushman404.me/Portfolio-Site/",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
@@ -18,6 +21,7 @@
     "@vercel/analytics": "^1.5.0",
     "cors": "^2.8.5",
     "framer-motion": "^12.15.0",
+    "gh-pages": "^6.3.0",
     "gsap": "^3.13.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
