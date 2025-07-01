@@ -17,7 +17,7 @@ const projectsData = [
     stack: ["JavaScript", "LocalStroage", "CSS"],
     image: "/dashboardProject/Courses.png",
     github: "https://github.com/Ayushman404/WebDev/tree/main/student_dashboard",
-    demo: "https://your-live-site.com",
+    demo: "https://student-dashboard-4673.vercel.app",
     quote: "Built for the overwhelmed student in me.",
     notes: "Learned JavaScript in depth."
   },
@@ -31,7 +31,7 @@ const projectsData = [
     stack: ["React", "GSAP", "TailwindCSS"],
     image: "/dashboardProject/portfolioHome.png",
     github: "https://github.com/Ayushman404/Portfolio-Site",
-    demo: "https://portfolio.com",
+    demo: "https://ayushman404.me",
     quote: "Where motion meets my creative soul.",
     notes: "Crafted with storytelling in mind and showing my personality through it."
   }
